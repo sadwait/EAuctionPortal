@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { BidDetails } from '../Models/bid-details';
+import { BidService } from '../Services/bid.service';
 
 @Component({
   selector: 'app-home',
@@ -6,10 +8,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  bidInfo: BidDetails = new BidDetails();
+  productId: any;
+  constructor(private bidService: BidService) { }
 
-  constructor() { }
+  ngOnInit(): void {    
+    this.getBidDeatils();
+  }
 
-  ngOnInit(): void {
+  getBidDeatils() {
+    this.bidService.getBidDetails(this.productId).subscribe({
+      next: (data) => {
+        this.bidInfo = data;
+      },
+      error: (err) => { },
+      complete: () => { }
+    });
   }
 
 }

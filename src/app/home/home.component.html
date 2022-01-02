@@ -4,10 +4,31 @@
     </div>
     <div>
         Product :
-        <mat-select>
-            <mat-option value="chain">Chain</mat-option>
-            <mat-option value="ring">Ring</mat-option>
-        </mat-select>
-        <button mat-raised-button class="btn btn-primary">GET</button>       
+        <mat-form-field appearance="fill">
+            <mat-select>
+                <mat-option value="chain">Chain</mat-option>
+                <mat-option value="ring">Ring</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <button mat-raised-button class="btn btn-primary">GET</button>
+        <br>
+        <p>Product Name: {{bidInfo.productInfo.productName}} </p>
+        <p>Short Description: {{bidInfo.productInfo.shortDescription}} </p>
+        <p>Detailed Description: {{bidInfo.productInfo.detailedDescription}} </p>
+        <p>Category: {{bidInfo.productInfo.category}} </p>
+        <p>Starting Price: {{bidInfo.productInfo.startingPrice}} </p>
+        <p>Bid End Date: {{bidInfo.productInfo.bidEndDate}} </p>
+    </div>
+    <div class="row">
+        <div class="col-3"><b>Bid Amount</b></div>
+        <div class="col-3"><b>Name</b></div>
+        <div class="col-3"><b>Email</b></div>
+        <div class="col-3"><b>Mobile</b></div>
+    </div>
+    <div class="row" *ngFor="let bid of bidInfo.bidsList">
+        <div class="col-3">{{bid.bidAmount}}</div>
+        <div class="col-3">{{bid.firstName}} {{bid.lastName}}</div>
+        <div class="col-3">{{bid.email}}</div>
+        <div class="col-3">{{bid.phone}}</div>
     </div>
 </div>
