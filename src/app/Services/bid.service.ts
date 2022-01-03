@@ -7,9 +7,14 @@ import { BidDetails } from '../Models/bid-details';
   providedIn: 'root'
 })
 export class BidService {
-  bidserviceUrl: string = "http://localhost:46917/e-auction/api/v1/Seller/show-bids/72ca09c8-65f6-4f6e-bcee-3d8684ef9169";
+  bidserviceUrl: string = "http://localhost:46917/e-auction/api/v1/Seller/show-bids/63ccb3c9-ad30-456b-b0d4-46d2f8a10ad5";
+  productUrl = "http://localhost:46917/e-auction/api/v1/Seller/get-products";
 
   constructor(private http: HttpClient) { }
+
+  getAllProducts() {
+    return this.http.get(this.productUrl);
+  }
 
   getBidDetails(productId: string): Observable<any> {
     return this.http.get(this.bidserviceUrl);

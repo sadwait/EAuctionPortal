@@ -1,34 +1,61 @@
-<div class="container">
-    <div>
-        <h1>E-Auction Portal</h1>
+<div class="container" style="width:60%">
+    <div class="row header">
+        <div class="col-md-4"> <img src="../assets/images/eauctionlogo.png" width="200px" height="100px"></div>
+        <div class="col-md-8 pt-5 text-end">
+            <h1>E-Auction Portal</h1>
+        </div>
     </div>
-    <div>
-        Product :
-        <mat-form-field appearance="fill">
-            <mat-select>
-                <mat-option value="chain">Chain</mat-option>
-                <mat-option value="ring">Ring</mat-option>
+    <div class="text-center mt-3">
+        <h5 style="color:darkblue">Fetch Bid Details</h5>
+    </div>
+    <div class="ddlProduct text-center">
+        Product: &nbsp;&nbsp;<mat-form-field appearance="outline">
+            <mat-select placeholder="Select product" [(value)]="selectedProductId">
+                <mat-option *ngFor="let product of productInfo" [value]="product.id">{{product.productName}}
+                </mat-option>
             </mat-select>
         </mat-form-field>
-        <button mat-raised-button class="btn btn-primary">GET</button>
-        <br>
-        <p>Product Name: {{bidInfo.productInfo.productName}} </p>
-        <p>Short Description: {{bidInfo.productInfo.shortDescription}} </p>
-        <p>Detailed Description: {{bidInfo.productInfo.detailedDescription}} </p>
-        <p>Category: {{bidInfo.productInfo.category}} </p>
-        <p>Starting Price: {{bidInfo.productInfo.startingPrice}} </p>
-        <p>Bid End Date: {{bidInfo.productInfo.bidEndDate}} </p>
+        &nbsp;
+        <button [disabled]="!selectedProductId" mat-raised-button class="btn btn-primary" (click)="getBidDeatils()">GET</button>
     </div>
-    <div class="row">
-        <div class="col-3"><b>Bid Amount</b></div>
-        <div class="col-3"><b>Name</b></div>
-        <div class="col-3"><b>Email</b></div>
-        <div class="col-3"><b>Mobile</b></div>
-    </div>
-    <div class="row" *ngFor="let bid of bidInfo.bidsList">
-        <div class="col-3">{{bid.bidAmount}}</div>
-        <div class="col-3">{{bid.firstName}} {{bid.lastName}}</div>
-        <div class="col-3">{{bid.email}}</div>
-        <div class="col-3">{{bid.phone}}</div>
+    <div *ngIf="bidInfo">
+        <div class="row">
+            <div class="col-6 text-end">Product Name :</div>
+            <div class="col-6 text-start">{{bidInfo.productInfo.productName}}</div>
+        </div>
+        <div class="row">
+            <div class="col-6 text-end">Short Description :</div>
+            <div class="col-6 text-start">{{bidInfo.productInfo.shortDescription}}</div>
+        </div>
+        <div class="row">
+            <div class="col-6 text-end">Detailed Description :</div>
+            <div class="col-6 text-start">{{bidInfo.productInfo.shortDescription}}</div>
+        </div>
+        <div class="row">
+            <div class="col-6 text-end">Category :</div>
+            <div class="col-6 text-start">{{bidInfo.productInfo.category}}</div>
+        </div>
+        <div class="row">
+            <div class="col-6 text-end">Starting Price :</div>
+            <div class="col-6 text-start">{{bidInfo.productInfo.startingPrice}}</div>
+        </div>
+        <div class="row">
+            <div class="col-6 text-end">Bid End Date :</div>
+            <div class="col-6 text-start">{{bidInfo.productInfo.bidEndDate}}</div>
+        </div>
+
+        <br />
+        <div class="row">
+            <div class="col-3 tblborder"><b>Bid Amount</b></div>
+            <div class="col-3 tblborder"><b>Name</b></div>
+            <div class="col-3 tblborder"><b>Email</b></div>
+            <div class="col-3 tblborder"><b>Mobile</b></div>
+        </div>
+        <div class="row" *ngFor="let bid of bidInfo.bidsList">
+            <div class="col-3 tblborder">{{bid.bidAmount}}</div>
+            <div class="col-3 tblborder">{{bid.firstName}} {{bid.lastName}}</div>
+            <div class="col-3 tblborder text-break">{{bid.email}}</div>
+            <div class="col-3 tblborder text-break">{{bid.phone}}</div>
+        </div>
     </div>
 </div>

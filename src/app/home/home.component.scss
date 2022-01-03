@@ -1,0 +1,15 @@
+.header
+{
+    border-bottom:solid 2px gray;
+}
+
+.tblborder
+{
+    border:solid 1px gray;
+}
+
+.ddlProduct ::ng-deep .mat-form-field-appearance-outline .mat-form-field-infix
+{
+    padding-top: 0;
+    padding-bottom:10px;
+}
