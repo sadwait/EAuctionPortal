@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit {
 
   getBidDeatils() {
     console.log(this.selectedProductId);
-    this.bidService.getBidDetails(this.productId).subscribe({
+    this.bidService.getBidDetails(this.selectedProductId).subscribe({
       next: (data) => {
         this.bidInfo = data;
       },
