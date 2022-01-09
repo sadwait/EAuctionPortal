@@ -5,9 +5,8 @@
 export const environment = {
   production: false,
   // sellerbaseUrl:"http://localhost:46917/e-auction/api/v1/Seller/"
-  sellerbaseUrl: "https://myeauctionsellerapi.azurewebsites.net/e-auction/api/v1/Seller/"
-
-
+  sellerbaseUrl: "https://eauctionapim.azure-api.net/sellermanagement/e-auction/api/v1/Seller/",
+  APIKEY: "29b7670424b74f4eb49708f7b358d58f"
 };
 
 /*
