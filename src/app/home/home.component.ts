@@ -31,6 +31,7 @@ export class HomeComponent implements OnInit {
     this.bidService.getBidDetails(this.selectedProductId).subscribe({
       next: (data) => {
         this.bidInfo = data;
+        this.bidInfo.bidsList.sort((a, b) => b.bidAmount - a.bidAmount);
       },
       error: (err) => { },
       complete: () => { }
